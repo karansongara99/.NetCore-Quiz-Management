@@ -10,9 +10,9 @@ all required screens.
 
 <p>Goal</p>
 • Efficient Quiz Management: <br>
-Develop a robust system for creating and managing quizzes. 
-• User-Friendly Interface: <br>
-Ensure an intuitive and responsive interface for both administrators and participants. 
-• Secure System: <br>
+Develop a robust system for creating and managing quizzes. <br>
+• User-Friendly Interface: 
+Ensure an intuitive and responsive interface for both administrators and participants. <br>
+• Secure System: 
 Implement user authentication to ensure the security and integrity of quiz content and user 
 data.
