@@ -1,6 +1,6 @@
 <h1>Quiz Management</h1>
 
-<p>Overview</p><br>
+<p>Overview</p>
 • Design and implement a Quiz Management Application that allows users to register, login, 
 create quizzes with different categories, add questions, attempt quizzes, and view their 
 scores. 
