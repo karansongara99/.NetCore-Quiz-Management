@@ -1,3 +1,4 @@
+<h1>1. Project Goals & Objectives </h1>
 ## Overview
 The **Quiz Management Application** is designed to allow users to:
 - Register, log in, and manage their accounts.
@@ -32,3 +33,29 @@ The application incorporates:
 
 ### 2. **Question Bank Management**
    Maintain a centralized repository for questions to facilitate easy reuse and organization.
+
+
+<h1>2. Scope of the Project </h1>
+## Scope of the Project
+### 1. **Quiz Creation and Management**
+   - Administrators can create, edit, and delete quizzes.
+   - Support for multiple question types:
+     - Multiple-choice questions (MCQs)
+     - True/False
+   - Centralized question bank with categorization and search functionality.
+
+### 2. **Quiz Delivery**
+   - Publish quizzes for participants.
+   - Secure access with unique user credentials.
+
+### 3. **User Management**
+   - Features for user registration, updates, and deletion.
+   - Password management and recovery options.
+
+### 4. **User Roles and Permissions**
+   - Role-based access control:
+     - **Administrators**: Manage quizzes and users.
+     - **Participants**: Take quizzes and view results.
+
+### 5. **Quizzes Rendering**
+   - Render quizzes with question and option displays, supporting types like MCQs and True/False.
