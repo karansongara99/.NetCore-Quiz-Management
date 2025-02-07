@@ -1,5 +1,3 @@
-# Quiz Management Application
-
 ## Overview
 The **Quiz Management Application** is designed to allow users to:
 - Register, log in, and manage their accounts.
@@ -34,4 +32,3 @@ The application incorporates:
 
 ### 2. **Question Bank Management**
    Maintain a centralized repository for questions to facilitate easy reuse and organization.
-
