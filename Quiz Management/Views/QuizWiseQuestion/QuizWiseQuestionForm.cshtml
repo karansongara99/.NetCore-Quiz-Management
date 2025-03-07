@@ -1,0 +1,101 @@
+﻿@model DataTable
+@using System.Data
+
+
+<div class="pagetitle">
+    <h1>Add Quiz Wise Question</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item">Quiz Wise Questions</li>
+            <li class="breadcrumb-item active">Quiz Wise Questions AddEdit</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Quiz Wise Questions Add/Edit</h5>
+                <!-- No Labels Form -->
+                <form class="row g-3">
+                    <div class="col-md-4">
+                        <label for="exampleFormControlInput1" class="form-label">Total Question Allowed</label>
+                        <input type="text" class="form-control border border-dark" placeholder="Total Question Allowed">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="exampleFormControlInput1" class="form-label">Selected Question Count</label>
+                        <input type="text" class="form-control border border-dark" placeholder="Selected Question Count">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="exampleFormControlInput1" class="form-label">Select Quiz</label>
+                        <select class="form-select border border-black" aria-label="Default select example">
+                            <option selected>Open this select Quiz</option>
+                            <option value="1">XYZ</option>
+                            <option value="2">ABC</option>
+                            <option value="3">DEF</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <!-- Default Table -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <input class="form-check-input border border-dark" type="checkbox" value="" onclick="checkUncheck(this)" id="">
+                                </th>
+                                <th scope="col">Question</th>
+                                <th scope="col">Option A</th>
+                                <th scope="col">Option B</th>
+                                <th scope="col">Option C</th>
+                                <th scope="col">Option D</th>
+                                <th scope="col">Answer</th>
+                                <th scope="col">Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow row in Model.Rows)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    <input class="form-check-input border border-black" name="ch" type="checkbox" value="" id="">
+                                </th>
+                                <td>@row["QuestionText"]</td>
+                                <td>@row["OptionA"]</td>
+                                <td>@row["OptionB"]</td>
+                                <td>@row["OptionC"]</td>
+                                <td>@row["OptionD"]</td>
+                                <td>@row["CorrectOption"]</td>
+                                <td>@row["QuestionMarks"]</td>
+                            </tr>
+                            }
+                           
+                        </tbody>
+                    </table>
+
+                    <div class="text-start">
+                        <button type="submit" class="btn btn-success">Save</button>
+                        <a asp-action="QuizWiseQuestionList" asp-controller="QuizWiseQuestion" class="btn btn-danger">Cancel</a>
+                    </div>
+                    <!-- End Default Table Example -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    function checkUncheck(main){
+         let all = document.getElementsByName('ch');
+         for(var i=0;i<all.length;i++)
+         {
+            all[i].checked = main.checked
+         }
+    }
+</script>
+

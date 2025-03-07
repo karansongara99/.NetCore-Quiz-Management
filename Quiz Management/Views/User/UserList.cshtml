@@ -1,0 +1,76 @@
+﻿@model DataTable
+@using System.Data
+
+<div class="pagetitle">
+    <h1>User List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item">User</li>
+            <li class="breadcrumb-item active">User List</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Search User</h5>
+                <!-- No Labels Form -->
+                <form class="row g-3">
+                    <div class="col-md-4">
+                        <label for="exampleFormControlInput1" class="form-label">User Name</label>
+                        <input type="text" class="form-control border-bottom border-black" placeholder="User Name">
+                    </div>
+                    <div class="text-start">
+                        <button type="submit" class="btn btn-success">Search</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                </form><!-- End No Labels Form -->
+                <br>
+                <h2 class="card-title">User List</h2>
+                <table class="table datatable">
+                    <thead>
+                        <tr>
+                            <th>
+                                <b>U</b>serID
+                            </th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>IsActive</th> 
+                            <th>IsAdmin</th> 
+                            <th>Creation Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DataRow row in Model.Rows)
+                        {
+                            <tr>
+                                <td>@row["UserID"]</td>
+                                <td>@row["UserName"]</td>
+                                <td>@row["Email"]</td>
+                                <td>@row["Mobile"]</td>
+                                <td>@row["IsActive"]</td>
+                                <td>@row["IsAdmin"]</td>
+                                <td>@row["Created"]</td>
+                                <td>
+                                    <a asp-controller="User" asp-action="EditUserForm" asp-route-UserID="@row["UserID"]" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
+                                    <a asp-action="UserDelete" asp-route-UserID="@row["UserID"]" onclick="confirmDelete()" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you Sure! You want to Delete this record from User?")
+    }
+</script>

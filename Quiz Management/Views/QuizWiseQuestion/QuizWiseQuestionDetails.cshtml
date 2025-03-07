@@ -1,0 +1,85 @@
+﻿@model DataTable
+@using System.Data
+
+
+<div class="pagetitle">
+    <h1>Quiz Wise Question Details</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="QuizWiseQuestionList" asp-controller="QuizWiseQuestion">Quiz Wise Question List</a></li>
+            <li class="breadcrumb-item active">Quiz Wise Question Details</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Quiz Wise Question Details</h5>
+        <div class="d-flex p-3 justify-content-end">
+            <a asp-action="QuestionLevelForm" asp-controller="QuestionLevel" class="btn btn-danger w-20">
+                Deleted Selected
+            </a> &nbsp;&nbsp;&nbsp;
+            <a asp-action="QuestionForm" asp-controller="Question" class="btn btn-primary w-20">
+                Add Question 
+            </a>
+        </div>
+            <p>Quiz Name : English Grammer Test</p>  
+            <p>Total Question in Quiz : 10</p>       
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <input class="form-check-input border border-dark" type="checkbox" value="" onclick="checkUncheck(this)" id="">
+                    </th>
+                    <th scope="col">Question Text</th>
+                    <th scope="col">Option A</th>
+                    <th scope="col">Option B</th>
+                    <th scope="col">Option C</th>
+                    <th scope="col">Option D</th>
+                    <th scope="col">Correct Option</th>
+                    <th scope="col">Marks</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DataRow row in Model.Rows)
+                {
+                    <tr>
+                        <th scope="row"> <input class="form-check-input border border-dark" name="ch" type="checkbox" value="" id=""></th>
+                        <td>@row["QuestionText"]</td>
+                        <td>@row["OptionA"]</td>
+                        <td>@row["OptionB"]</td>
+                        <td>@row["OptionC"]</td>
+                        <td>@row["OptionD"]</td>
+                        <td>@row["CorrectOption"]</td>
+                        <td>@row["QuestionMarks"]</td>
+                        <td>
+                            <a asp-action="QuizWiseQuestionDelete" asp-route-QuestionID="@row["QuestionID"]" onclick="confirmDelete()" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+     <!-- End Table with stripped rows -->
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function checkUncheck(main){
+         let all = document.getElementsByName('ch');
+         for(var i=0;i<all.length;i++)
+         {
+            all[i].checked = main.checked
+         }
+    }
+</script>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you Sure! You want to Delete this record from Quiz?")
+    }
+</script>

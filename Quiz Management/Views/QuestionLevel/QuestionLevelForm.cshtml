@@ -1,0 +1,50 @@
+﻿@using System.Data
+@model QuestionLevelsModel
+
+<div class="pagetitle">
+    <h1>Add Question Level</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item">QuestionLevel</li>
+            <li class="breadcrumb-item active">Add Question Level</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Question Level Add/Edit</h5>
+                <!-- No Labels Form -->
+                <form class="row g-3" asp-controller="QuestionLevel" asp-action="QuestionLevelSave" method="post">
+                    <input type="hidden" asp-for="QuestionLevelID" />
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Question Level</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control border border-black" asp-for="QuestionLevel" placeholder="Question Level (e.g. Easy, Medium, Hard)" id="inputText">
+                            <span class="text-danger" asp-validation-for="QuestionLevel"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                       
+                        <div class="col-sm-10">
+                            
+                          
+                            <button type="submit" class="btn btn-success">Save</button>
+                            <a asp-action="QuestionLevelList" asp-controller="QuestionLevel" class="btn btn-danger">Cancel</a>
+                        </div>
+                    </div>
+                </form><!-- End No Labels Form -->
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <a href="~/lib/jquery/dist/jquery.min.map">~/lib/jquery/dist/jquery.min.map</a>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

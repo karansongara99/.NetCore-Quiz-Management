@@ -1,0 +1,99 @@
+﻿@using System.Data
+@model QuestionModel
+
+<div class="pagetitle">
+    <h1>Question Forms</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item">Question</li>
+            <li class="breadcrumb-item active">Add Question</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Question Add/Edit</h5>
+                <!-- No Labels Form -->
+                <form asp-controller="Question" asp-action="QuestionSave" method="post">
+                    <input type="hidden" asp-for="QuestionID"/>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Question Text</label>
+                        <div class="col-sm-10">
+                            <textarea cols="10" asp-for="QuestionText" class="col-12" rows="2" placeholder="Enter Question"></textarea>
+                            <span class="text-danger" asp-validation-for="QuestionText"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Question Level</label>
+                        <div class="col-sm-10">
+                            <select class="form-select border border-black" asp-for="QuestionLevelID" aria-label="Default select example" asp-items="@(new SelectList(ViewBag.QuestionLevelList, "QuestionLevelID", "QuestionLevel"))">
+                                <option>Select User</option>
+                            </select>
+                            <span class="text-danger" asp-validation-for="QuestionLevelID"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Option A</label>
+                        <div class="col-sm-10">
+                            <input type="text" asp-for="OptionA" class="form-control  border border-black" placeholder="Option A" id="inputEmail">
+                            <span class="text-danger" asp-validation-for="OptionA"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Option B</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control  border border-black" asp-for="OptionB" placeholder="Option B" id="inputEmail">
+                            <span class="text-danger" asp-validation-for="OptionB"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Option C</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control  border border-black" asp-for="OptionC" placeholder="Option C" id="inputEmail">
+                            <span class="text-danger" asp-validation-for="OptionC"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Option D</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control  border border-black" asp-for="OptionD" placeholder="Option D" id="inputEmail">
+                            <span class="text-danger" asp-validation-for="OptionD"></span>
+                        </div>
+                    </div>
+                     <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Correct Option</label>
+                        <div class="col-sm-10">
+                            <input type="text" asp-for="CorrectOption" class="form-control  border border-black" placeholder="Correct Option" id="inputEmail">
+                            <span class="text-danger" asp-validation-for="CorrectOption"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Marks</label>
+                        <div class="col-sm-10">
+                            <input type="text" asp-for="QuestionMarks" class="form-control  border border-black" placeholder="Marks" id="inputEmail">
+                            <span class="text-danger" asp-validation-for="QuestionMarks"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-success">Save</button>
+                            <a asp-action="QuestionList" asp-controller="Question" class="btn btn-danger">Cancel</a>
+                        </div>
+                    </div>
+                </form><!-- End No Labels Form -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <a href="~/lib/jquery/dist/jquery.min.map">~/lib/jquery/dist/jquery.min.map</a>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,98 @@
+﻿@model DataTable
+@using System.Data
+
+<div class="pagetitle">
+    <h1>Question Level List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item">Question Level</li>
+            <li class="breadcrumb-item active">Question Level List</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Question Level List</h2>
+                 <div class="text-danger">
+                     @{
+                        if (@TempData["SuccessMessage"] != null)
+                        {
+                             <p>@TempData["SuccessMessage"]</P>
+                        }
+                         if (@TempData["ErrorMessage"] != null)
+                         {
+                              <p>@TempData["ErrorMessage"]</P>
+                         }
+                     }
+                </div>
+                <div class="d-flex p-3 justify-content-end">
+                    <a asp-action="QuestionLevelList" asp-controller="QuestionLevel" onclick="selectedDelete()" class="btn btn-danger w-20">
+                    Deleted Selected
+                    </a> &nbsp;&nbsp;&nbsp;
+                    <a asp-action="QuestionLevelForm" asp-controller="QuestionLevel" class="btn btn-primary w-20">
+                        Add Question Level
+                    </a>
+                </div>
+                @* datatable *@
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input class="form-check-input border border-black" onclick="checkUncheck(this)" type="checkbox" value="" id="">
+                            </th>
+                            <th>QuestionLevel</th>
+                            <th>User Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @foreach (DataRow row in Model.Rows)
+                            {
+                                <tr>
+                                    <td>
+                                        <input class="form-check-input border border-black" name="ch" type="checkbox" value="" id="">
+                                    </td>
+                                    <td>@row["QuestionLevel"]</td>
+                                    <td>@row["UserName"]</td>
+                                    <td>
+                                    <a asp-controller="QuestionLevel" asp-action="QuestionLevelForm" asp-route-QuestionLevelID="@row["QuestionLevelID"]" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
+                                    <a asp-action="QuestionLevelDelete" asp-route-QuestionLevelID="@row["QuestionLevelID"]" onclick="confirmDelete()" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                                    </td>
+                                </tr>
+
+                            }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    function checkUncheck(main){
+         let all = document.getElementsByName('ch');
+         for(var i=0;i<all.length;i++)
+         {
+            all[i].checked = main.checked
+         }
+    }
+</script>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you Sure! You want to Delete this record from User?")
+    }
+</script>
+
+<script>
+    function selectedDelete() {
+        return confirm("Selectded Question Level this record from User?")
+    }
+</script>

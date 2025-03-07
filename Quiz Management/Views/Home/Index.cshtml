@@ -1,0 +1,139 @@
+﻿@using System.Data
+@model UserHomePageDisplayModel
+
+<div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Admin</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+            <div class="row">
+                <!-- Quiz Card -->
+                    <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Quiz</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                   <a asp-action="QuizList" asp-controller="Quiz"><i class="bi bi-book"></i></a>
+                                </div>
+                                <div class="ps-3">
+                                    <a asp-action="QuizList" asp-controller="Quiz"><h5>@TempData.Peek("QuizCount")</h5></a>
+                                </div>
+                            </div>
+                        </div>
+               
+                    </div>
+                </div> 
+                <!-- End Quiz Card -->
+                <!-- Question Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card revenue-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Question</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                     <a asp-action="QuestionList" asp-controller="Question"><i class="bi bi-question-circle"></i></a>
+                                </div>
+                                <div class="ps-3">
+                                    <a asp-action="QuestionList" asp-controller="Question"><h5>@TempData.Peek("QuestionCount")</h5></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Question Card -->
+                <!-- Question Levels Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card revenue-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Question Levels</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                     <a asp-action="QuestionLevelList" asp-controller="QuestionLevel"><i class="bi bi-question-circle"></i></a>
+                                </div>
+                                <div class="ps-3">
+                                    <a asp-action="QuestionLevelList" asp-controller="QuestionLevel"><h5>@TempData.Peek("QuestionLevelCount")</h5></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Question Levels Card -->
+            </div>
+        </div><!-- End Left side columns -->
+
+        <!-------------------------------------------------------------------------------------------------------->
+        <!-- Table Start With Recent Quiz -->
+        <div class="col-lg-6 ">
+            <div class="card">
+                <div class="card-body ">
+                    <h5 class="card-title">Recent 10 Quiz</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Quiz ID</th>
+                                <th scope="col">Quiz Name</th>
+                                <th scope="col">Total Question</th>
+                                <th scope="col">Quiz Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var quiz in Model.quizData)
+                            {
+                                <tr>
+                                    <td>@quiz.QuizID</td>
+                                    <td>@quiz.QuizName</td>
+                                    <td>@quiz.TotalQuestions</td>
+                                    <td>@quiz.QuizDate</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- End Recent 10 Quiz rows -->
+                </div>
+            </div>
+        </div>
+
+        <!-------------------------------------------------------------------------------------------------------->
+        <!-- Table Start with Recent Question -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Recent 10 Questions</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Question ID</th>
+                                <th scope="col">Question</th>
+                                <th scope="col">Question Marks</th>
+                                <th scope="col">Correct Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var question in Model.questionData){
+                            <tr>
+                                <td>@question.QuestionID</td>
+                                <td>@question.QuestionText</td>
+                                <td>@question.QuestionMarks</td>
+                                <td>@question.CorrectOption</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- End Recent 10 Question rows -->
+
+                </div>
+          </div>
+      </div>    
+      </div>
+</section>

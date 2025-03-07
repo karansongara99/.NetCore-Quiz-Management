@@ -1,0 +1,64 @@
+﻿@using System.Data
+@model QuizModel
+
+<div class="pagetitle">
+    <h1>Quiz Forms</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item">Quiz</li>
+            <li class="breadcrumb-item active">Add Quiz</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quiz Add/Edit</h5>
+                    <!-- Horizontal Form -->
+                    <form asp-controller="Quiz" asp-action="QuizSave" method="post">
+                        <input type="hidden" asp-for="QuizID" />
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Quiz Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" asp-for="QuizName" class="form-control border border-black" placeholder="Quiz Name" id="inputText">
+                                <span class="text-danger" asp-validation-for="QuizName"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Total Question</label>
+                            <div class="col-sm-10">
+                                <input type="number" asp-for="TotalQuestions" class="form-control  border border-black" placeholder="Total Question" id="inputEmail">
+                                <span class="text-danger" asp-validation-for="TotalQuestions"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Quiz Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" asp-for="QuizDate"  class="form-control border border-black" placeholder="Quiz Date" id="inputEmail">
+                                <span class="text-danger" asp-validation-for="QuizDate"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-success">Save</button>
+                                <a asp-action="QuizList" asp-controller="Quiz" class="btn btn-danger">Cancel</a>
+                            </div>
+                        </div>
+                    </form><!-- End Horizontal Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <a href="~/lib/jquery/dist/jquery.min.map">~/lib/jquery/dist/jquery.min.map</a>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

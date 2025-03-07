@@ -1,0 +1,79 @@
+﻿@model DataTable
+@using System.Data
+
+<div class="pagetitle">
+    <h1>Quiz Wise Question List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item">Quiz Wise Question</li>
+            <li class="breadcrumb-item active">Quiz Wise Question List</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Search Quiz Wise Question</h5>
+                <!-- No Labels Form -->
+                <form class="row g-3">
+                    <div class="col-md-4">
+                        <label for="exampleFormControlInput1" class="form-label">Select Quiz</label>
+                        <select class="form-select border border-black" aria-label="Default select example">
+                            <option selected>Open this select Quiz</option>
+                            <option value="1">Karan</option>
+                            <option value="2">Yash</option>
+                            <option value="3">Nikhil</option>
+                        </select>
+                    </div>
+                    
+                    <div class="text-start">
+                        <button type="submit" class="btn btn-success">Search</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                </form><!-- End No Labels Form -->
+                <br>
+                <h2 class="card-title">Quiz Wise Question List</h2>
+                <div class="d-flex p-3 justify-content-end">
+                    <a asp-action="QuizWiseQuestionForm" asp-controller="QuizWiseQuestion" class="btn btn-primary w-20">
+                        <i class="bi bi-plus"></i> Add Quiz Wise Question
+                    </a>
+                </div>
+                <table class="table datatable">
+
+                    <thead>
+                        <tr>
+                            <th>Quiz Name</th>
+                            <th>Entered Questions</th>
+                            <th>User Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DataRow row in Model.Rows)
+                        {
+                            <tr>
+                                <td>@row["QuizName"]</td>
+                                <td>@row["TotalQuestions"]</td>
+                                <td>@row["UserName"]</td>
+                                <td>
+                                    <a asp-controller="QuizWiseQuestion" asp-action="QuizWiseQuestionDetails" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a>
+                                    <a asp-controller="QuizWiseQuestion" asp-action="QuizWiseQuestionForm" asp-route-QuizID="@row["QuizID"]" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
+                                    <a asp-action="QuizWiseQuestionQuizDelete" asp-route-QuizID="@row["QuizID"]" onclick="confirmDelete()" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you Sure! You want to Delete this record from Question?")
+    }
+</script>
